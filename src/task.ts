@@ -59,7 +59,7 @@ async function main(): Promise<void> {
 
         // Do another Rest call
         tl.logDetail(mainflowLogId, `Post a request`);
-        let requestId: string = await requestSomeProcess();
+        const requestId: string = await requestSomeProcess();
         tl.logDetail(mainflowLogId, `Followup the request, requestId: ${requestId}`);
         // Wait for request completion
         await waitForStopped(requestId, confirmationTimeout);
