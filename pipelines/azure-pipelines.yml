@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: default
+  vmImage: 'ubuntu-latest'
 
 variables:
 - name: task.test.trace
