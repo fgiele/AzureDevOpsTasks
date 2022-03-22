@@ -1,0 +1,74 @@
+trigger:
+- main
+
+pool:
+  name: default
+
+variables:
+- name: task.test.trace
+  value: 1
+
+steps:
+
+- task: PowerShell@2
+  displayName: '[HACK] Copy node version 10.21.0 to cache directory'
+  inputs:
+    targetType: 'inline'
+    script: |
+      $NODEDIR = "$HOME/azure-pipelines-task-lib/_download"
+      New-Item -ItemType Directory -Force -Path $NODEDIR
+      Copy-Item -Path ./hack/* -Destination $NODEDIR -recurse -Force
+- task: Npm@1
+  displayName: '[NPM ci] Restore all packages'
+  inputs:
+    command: 'ci'
+- task: Npm@1
+  displayName: '[NPM run build] Build task and tests'
+  inputs:
+    command: 'custom'
+    customCommand: 'run build'
+- task: Npm@1
+  displayName: '[NPM run coverage] Run tests and collect coverage'
+  inputs:
+    command: 'custom'
+    customCommand: 'run coverage'
+- task: Npm@1
+  displayName: '[NPM run lint] Static code analysis'
+  inputs:
+    command: 'custom'
+    customCommand: 'run lint'
+- task: Npm@1
+  displayName: '[NPM run package] Create the VSIX package'
+  inputs:
+    command: 'custom'
+    customCommand: 'run package'
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/test-results.xml'
+- task: PublishCodeCoverageResults@1
+  displayName: 'Retrieve code coverage data'
+  condition: always()
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+- task: CopyFiles@2
+  displayName: '[COPY] Move vsix to staging directory'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '*.vsix'
+    TargetFolder: '$(Build.StagingDirectory)'
+- task: PublishBuildArtifacts@1
+  displayName: '[VSIX] Publish vsix artifact'
+  inputs:
+    PathtoPublish: '$(Build.StagingDirectory)'
+    ArtifactName: 'TaskPackage'
+    publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  displayName: '[DEBUG] When pipeline fails, package and publish the logs'
+  condition: failed()
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/dist'
+    ArtifactName: 'LogFiles'
+    publishLocation: 'Container'

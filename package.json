@@ -1,0 +1,38 @@
+{
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "package": "tfx extension create",
+    "gallery-publish": "tfx extension publish --rev-version",
+    "clean": "rimraf ./dist && rimraf ./*.vsix && rimraf ./coverage && rimraf ./.nyc_output",
+    "test": "mocha  dist/tst/testsuite.test.js --reporter mocha-junit-reporter",
+    "tb": "npm  run clean && tsc -p tsconfig.json && mocha dist/tst/testsuite.test.js --reporter mocha-junit-reporter",
+    "coverage": "nyc -r cobertura -r html npm run test",
+    "lint": "npx eslint . --ext .ts,.tsx"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "adm-zip": "0.4.13",
+    "azure-devops-node-api": "^10.2.2",
+    "azure-pipelines-task-lib": "^3.2.0",
+    "eslint": "^8.11.0",
+    "js-yaml": "^3.13.1",
+    "minimatch": "3.0.2",
+    "minimist": "^1.2.5",
+    "mocha": "^9.2.2",
+    "mocha-junit-reporter": "^2.0.2",
+    "nock": "^13.2.4",
+    "nyc": "^15.1.0",
+    "q": "1.4.1",
+    "rimraf": "^3.0.2",
+    "semver": "4.3.3",
+    "shelljs": "^0.8.5",
+    "sync-request": "4.1.0",
+    "tfx-cli": "^0.11.0",
+    "ts-node": "^10.7.0",
+    "typed-rest-client": "^1.8.6",
+    "typescript": "^3.9.10",
+    "validator": "^13.7.0"
+  }
+}

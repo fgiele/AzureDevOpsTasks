@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "dist/",
+        "module": "commonjs",
+        "strictNullChecks": true,
+        "resolveJsonModule": true
+    },
+    "include":[
+        "tst/**/*.ts",
+        "src/**/*.json"
+    ],
+    "files":[
+        "src/task.ts"
+    ]
+}

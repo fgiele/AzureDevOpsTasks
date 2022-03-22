@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="8.6310" tests="6" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-03-22T14:21:19" tests="0" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="Happy flows" timestamp="2022-03-22T14:21:19" tests="2" file="C:\Projects\CleanTask\dist\tst\testsuite.test.js" time="5.1160" failures="0">
+    <testcase name="Happy flows Normal flow, everything needs to be created" time="1.0060" classname="Normal flow, everything needs to be created">
+    </testcase>
+    <testcase name="Happy flows Normal flow, processing is slow" time="4.1090" classname="Normal flow, processing is slow">
+    </testcase>
+  </testsuite>
+  <testsuite name="Error flows" timestamp="2022-03-22T14:21:24" tests="4" file="C:\Projects\CleanTask\dist\tst\testsuite.test.js" time="3.5130" failures="0">
+    <testcase name="Error flows Incomplete configuration" time="0.6960" classname="Incomplete configuration">
+    </testcase>
+    <testcase name="Error flows Error flow, not authorized on token request" time="0.8980" classname="Error flow, not authorized on token request">
+    </testcase>
+    <testcase name="Error flows Error flow, failure to get entity" time="0.9430" classname="Error flow, failure to get entity">
+    </testcase>
+    <testcase name="Error flows Error flow, failure to run process" time="0.9760" classname="Error flow, failure to run process">
+    </testcase>
+  </testsuite>
+</testsuites>
