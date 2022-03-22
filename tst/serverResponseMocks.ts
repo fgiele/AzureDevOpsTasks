@@ -103,7 +103,7 @@ export function getProcessOk(requestId: string) {
         });
 }
 
-export function getProcessFails(requestId: string) {
+export function getProcessFails() {
     nock(ServerUrl, {
         reqheaders: {
             authorization: `Bearer ${AuthorizationToken}`,
