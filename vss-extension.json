@@ -11,7 +11,7 @@
         }
     ],
     "icons": {
-        "default": "static/demo.png"
+        "default": "static/demo-icon.png"
     },
     "scopes": [
         "vso.build"
