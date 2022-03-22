@@ -144,7 +144,7 @@ async function requestSomeProcess(): Promise<string> {
         name: 'Something',
         data: {
             Prop1: 123,
-            Prop2: null,
+            Prop2: optionalValue,
             Prop3: false
         }
     }
