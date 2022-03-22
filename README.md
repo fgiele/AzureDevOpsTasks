@@ -11,7 +11,7 @@ https://nodejs.org/dist/v10.21.0/win-x64/node.exe
 Create an empty file named **node10.completed** and place this in:  
 %home%\azure-pipelines-task-lib\_download
 
-So your N disk should look like this:  
+So your hom location should look like this:  
 **%home%**  
 &nbsp;&nbsp;**azure-pipelines-task-lib**  
 &nbsp;&nbsp;&nbsp;&nbsp;**_download**  
