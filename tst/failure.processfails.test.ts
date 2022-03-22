@@ -21,6 +21,6 @@ mockServer.cleanUp();
 
 mockServer.getTokenOk();
 mockServer.getEntityOk();
-mockServer.getProcessFails(requestId);
+mockServer.getProcessFails();
 
 testrunner.run();
