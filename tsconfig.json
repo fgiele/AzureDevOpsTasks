@@ -1,16 +1,17 @@
 {
     "compilerOptions": {
-        "target": "es6",
-        "outDir": "dist/",
+        "lib": [ "es6"],
+        "target": "ES6",
         "module": "commonjs",
-        "strictNullChecks": true,
-        "resolveJsonModule": true
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "inlineSourceMap": true
     },
     "include":[
         "tst/**/*.ts",
+        "src/**/*.ts",
         "src/**/*.json"
-    ],
-    "files":[
-        "src/task.ts"
     ]
 }
