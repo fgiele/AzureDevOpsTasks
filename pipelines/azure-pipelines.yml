@@ -23,6 +23,13 @@ steps:
   displayName: '[NPM ci] Restore all packages'
   inputs:
     command: 'ci'
+- task: SonarCloudPrepare@1
+  displayName: '[Sonar] Prepare scan'
+  inputs:
+    SonarCloud: 'SonarCloud'
+    organization: 'fgi'
+    scannerMode: 'CLI'
+    configMode: 'file'
 - task: Npm@1
   displayName: '[NPM run build] Build task and tests'
   inputs:
@@ -33,6 +40,8 @@ steps:
   inputs:
     command: 'custom'
     customCommand: 'run coverage'
+- task: SonarCloudAnalyze@1
+  displayName: '[Sonar] Run scan'
 - task: Npm@1
   displayName: '[NPM run lint] Static code analysis'
   inputs:
