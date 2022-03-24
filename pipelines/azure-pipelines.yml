@@ -1,5 +1,5 @@
 trigger:
-- main
+  batch: true
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -40,6 +40,7 @@ steps:
     customCommand: 'run lint'
 - task: Npm@1
   displayName: '[NPM run package] Create the VSIX package'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   inputs:
     command: 'custom'
     customCommand: 'run package'
@@ -56,12 +57,14 @@ steps:
     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
 - task: CopyFiles@2
   displayName: '[COPY] Move vsix to staging directory'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: '*.vsix'
     TargetFolder: '$(Build.StagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: '[VSIX] Publish vsix artifact'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   inputs:
     PathtoPublish: '$(Build.StagingDirectory)'
     ArtifactName: 'TaskPackage'
