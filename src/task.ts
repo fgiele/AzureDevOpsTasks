@@ -188,7 +188,7 @@ async function getstatus(requestId: string): Promise<requestStatus> {
     }
 }
 
-function getEndpointDetails(endpointInputFieldName) {
+function getEndpointDetails(endpointInputFieldName: string) {
     const errorMessage = tl.loc("CannotDecodeEndpoint");
     const endpoint = tl.getInput(endpointInputFieldName, true);
 

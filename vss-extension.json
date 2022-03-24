@@ -54,7 +54,7 @@
     ],
     "files": [
         {
-            "path": "dist/src",
+            "path": "src",
             "addressable": true
         },
         {
