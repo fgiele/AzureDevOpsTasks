@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.json",
+    "exclude": [
+      "tst/**/*.ts"
+    ],
+    "files": ["src/task.ts"],
+    "compilerOptions": {
+      "outDir": "dist"
+    }
+  }
