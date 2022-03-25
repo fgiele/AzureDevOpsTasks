@@ -3,11 +3,11 @@ import * as rm from 'typed-rest-client';
 import * as httpm from 'typed-rest-client/HttpClient'
 
 // Response type interfaces
-interface requestResponse {
+interface RequestResponse {
     requestId: string;
 }
 
-interface requestStatus {
+interface RequestStatus {
     requestId: string;
     status: string
 }
@@ -41,7 +41,7 @@ async function main(): Promise<void> {
 
         // Get a new token
         tl.logDetail(mainflowLogId, `Get authorization token`);
-        const authToken: string = await getToken(userId, password);
+        const authToken: string = await getToken();
 
         // Create authenticated REST client, using token
         restClient = new rm.RestClient('AzureDevops-Task', restServer, [], {
@@ -72,8 +72,8 @@ async function main(): Promise<void> {
     }
 }
 
-async function getToken(userId: string, password: string): Promise<string> {
-    interface tokenResponse {
+async function getToken(): Promise<string> {
+    interface TokenResponse {
         token: string;
     }
     const tokenRequest = { username: userId, password: password };
@@ -88,7 +88,7 @@ async function getToken(userId: string, password: string): Promise<string> {
 
     const response: httpm.HttpClientResponse = await httpClient.post(getTokenUrl, JSON.stringify(tokenRequest));
 
-    const responseBody: tokenResponse = JSON.parse(await response.readBody());
+    const responseBody: TokenResponse = JSON.parse(await response.readBody());
     const authToken = responseBody.token;
 
     if (authToken == undefined || authToken.length == 0) {
@@ -99,7 +99,7 @@ async function getToken(userId: string, password: string): Promise<string> {
 }
 
 async function getEntitydata(): Promise<string> {
-    interface entityResponse {
+    interface EntityResponse {
         content: [{
             entity: [{
                 name: string;
@@ -111,7 +111,7 @@ async function getEntitydata(): Promise<string> {
 
     const catalogRequestUrl = `${restServer}/service/api/entity`;
 
-    const response: rm.IRestResponse<entityResponse> = await restClient.get<entityResponse>(catalogRequestUrl);
+    const response: rm.IRestResponse<EntityResponse> = await restClient.get<EntityResponse>(catalogRequestUrl);
 
     let entityProperty: string | undefined;
 
@@ -149,7 +149,7 @@ async function requestSomeProcess(): Promise<string> {
         }
     }
 
-    const response: rm.IRestResponse<requestResponse> = await restClient.create(someProcessRequestUrl, someProcessRequest);
+    const response: rm.IRestResponse<RequestResponse> = await restClient.create(someProcessRequestUrl, someProcessRequest);
 
     if (response.statusCode != HttpStatusCreated) {
         // Something to do?
@@ -160,7 +160,7 @@ async function requestSomeProcess(): Promise<string> {
 async function waitForStopped(requestId: string, timeoutSeconds: number): Promise<void> {
     const requestStoppedStatus = 'STOPPED';
     const timeout: Date = new Date(new Date().getTime() + (1000 * timeoutSeconds));
-    let requestStatus: requestStatus = { status: 'Running', requestId: requestId };
+    let requestStatus: RequestStatus = { status: 'Running', requestId: requestId };
 
     while (new Date() < timeout) {
         requestStatus = await getstatus(requestId);
@@ -176,10 +176,10 @@ async function waitForStopped(requestId: string, timeoutSeconds: number): Promis
     }
 }
 
-async function getstatus(requestId: string): Promise<requestStatus> {
+async function getstatus(requestId: string): Promise<RequestStatus> {
     const statusUrl = `${restServer}/service/api/requests/${requestId}`;
 
-    const response: rm.IRestResponse<requestStatus> = await restClient.get<requestStatus>(statusUrl);
+    const response: rm.IRestResponse<RequestStatus> = await restClient.get<RequestStatus>(statusUrl);
 
     if (response.result != undefined) {
         return response.result;
@@ -197,13 +197,13 @@ function getEndpointDetails(endpointInputFieldName: string) {
     }
 
     const url = tl.getEndpointUrl(endpoint, false) || '';
-    const username = tl.getEndpointAuthorizationParameter(endpoint, 'username', false) || '';
-    const password = tl.getEndpointAuthorizationParameter(endpoint, 'password', false) || '';
+    const usernameValue = tl.getEndpointAuthorizationParameter(endpoint, 'username', false) || '';
+    const passwordValue = tl.getEndpointAuthorizationParameter(endpoint, 'password', false) || '';
 
     return {
         url: url,
-        username: username,
-        password: password
+        username: usernameValue,
+        password: passwordValue
     };
 }
 
