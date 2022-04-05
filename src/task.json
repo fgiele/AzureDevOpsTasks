@@ -1,6 +1,6 @@
 {
     "id": "",
-    "name": "DemoResttask",
+    "name": "restcalldemo",
     "friendlyName": "Demo of a task that calls REST API",
     "description": "This task will call REST APIs based on input",
     "category": "Build",

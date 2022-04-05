@@ -7,11 +7,12 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
-        "inlineSourceMap": true
+        "inlineSourceMap": true,
+        "resolveJsonModule": true
     },
     "include":[
         "tst/**/*.ts",
         "src/**/*.ts",
-        "src/**/*.json"
+        "src/**/task.json"
     ]
 }

@@ -1,0 +1,69 @@
+{
+    "manifestVersion": 1,
+    "id": "CollectionOfDemoTasks",
+    "version": "0.0.1",
+    "name": "Demo set of tasks",
+    "publisher": "fgiele",
+    "description": "Collection of tasks that demonstrate how to create custom tasks, build and test them",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "icons": {
+        "default": "static/demo-icon.png"
+    },
+    "scopes": [
+        "vso.build"
+    ],
+    "categories": [
+        "Azure Pipelines"
+    ],
+    "content": {
+        "details": {
+            "path": "static/readme.md"
+        }
+    },
+    "links": {
+        "getstarted": {
+            "uri": "https://github.com/fgiele/AzureDevOpsTasks/README.md"
+        },
+        "support": {
+            "uri": "https://github.com/fgiele/AzureDevOpsTasks"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/fgiele/AzureDevOpsTasks"
+    },
+    "contributions": [
+        {
+            "id": "restcalldemo-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "task"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "packagePath": "task/restcalldemo"
+        },
+        {
+            "path": "src/icon",
+            "packagePath": "task/restcalldemo"
+        },
+        {
+            "path": "static",
+            "addressable": true
+        },
+        {
+            "path": "src/node_modules",
+            "packagePath": "task/restcalldemo/node_modules"
+        }
+    ]
+}

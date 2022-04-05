@@ -4,3 +4,9 @@ dist/
 node_modules/
 *.vsix
 test-results.xml
+tst/*.js
+tst/*.log
+src/*.js
+**/*.js.map
+test-results.xml
+.taskkey

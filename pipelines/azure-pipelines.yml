@@ -23,6 +23,11 @@ steps:
   displayName: '[NPM ci] Restore all packages'
   inputs:
     command: 'ci'
+- task: Npm@1
+  displayName: '[NPM ci] Restore task packages'
+  inputs:
+    command: 'ci'
+    workingDir: 'src'
 - task: SonarCloudPrepare@1
   displayName: '[Sonar] Prepare scan'
   inputs:

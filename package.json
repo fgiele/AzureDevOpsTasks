@@ -2,21 +2,24 @@
   "scripts": {
     "build": "tsc -p tsconfig-build.json",
     "postbuild-disable": "npm run package",
-    "package": "tfx extension create",
+    "package": "tfx extension create  --manifests azure-devops-extension.json",
+    "testpackage": "tfx extension create  --manifests azure-devops-extension.json --rev-version",
     "gallery-publish": "tfx extension publish --rev-version",
     "clean": "rimraf ./dist && rimraf ./*.vsix && rimraf ./coverage && rimraf ./.nyc_output && rimraf ./tst/*.log && rimraf ./tst/*.js && rimraf ./src/*.js",
     "test": "tsc -p tsconfig.json && mocha -r ts-node/register tst/testsuite.test.ts --reporter mocha-junit-reporter",
     "tb": "npm  run clean && npm run coverage",
-    "coverage": "nyc -r cobertura -r lcov npm run test",
+    "coverage": "nyc npm run test",
     "lint": "npx eslint . --ext .ts,.tsx"
   },
   "devDependencies": {
+    "typed-rest-client": "^1.8.6",
+    "azure-pipelines-task-lib": "^3.2.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/mocha": "^9.1.0",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "adm-zip": "0.4.13",
     "azure-devops-node-api": "^10.2.2",
-    "azure-pipelines-task-lib": "^3.2.0",
     "eslint": "^8.11.0",
     "js-yaml": "^3.13.1",
     "minimist": "^1.2.5",
@@ -32,7 +35,6 @@
     "sync-request": "4.1.0",
     "tfx-cli": "^0.11.0",
     "ts-node": "^10.7.0",
-    "typed-rest-client": "^1.8.6",
     "typescript": "^3.9.10",
     "validator": "^13.7.0"
   },
@@ -40,8 +42,16 @@
     "extension": [
       ".ts"
     ],
+    "include": [
+      "src/**/!(*.test.*).[tj]s?(x)"
+    ],
     "exclude": [
       "**/*.d.ts"
+    ],
+    "reporter": [
+      "cobertura",
+      "lcov",
+      "text"
     ],
     "all": true
   }
