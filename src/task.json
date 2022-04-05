@@ -1,5 +1,5 @@
 {
-    "id": "",
+    "id": "b150485b-9b60-4607-8c72-f856a16a06c1",
     "name": "restcalldemo",
     "friendlyName": "Demo of a task that calls REST API",
     "description": "This task will call REST APIs based on input",
@@ -8,7 +8,7 @@
     "version": {
       "Major": 0,
       "Minor": 1,
-      "Patch": 0
+      "Patch": 1
     },
     "minimumAgentVersion": "1.83.0", 
     "inputs": [
@@ -38,7 +38,7 @@
     "instanceNameFormat": "Rest API calling demo",
     "execution": {
       "Node10": {
-        "target": "$(currentDirectory)\\task.js",
+        "target": "$(currentDirectory)//task.js",
         "argumentFormat": "",
         "workingDirectory": "$(currentDirectory)"
       }

@@ -1,9 +1,9 @@
 {
     "manifestVersion": 1,
     "id": "CollectionOfDemoTasks",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "name": "Demo set of tasks",
-    "publisher": "fgiele",
+    "publisher": "FreekGiele",
     "description": "Collection of tasks that demonstrate how to create custom tasks, build and test them",
     "targets": [
         {

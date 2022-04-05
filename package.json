@@ -2,12 +2,12 @@
   "scripts": {
     "build": "tsc -p tsconfig-build.json",
     "postbuild-disable": "npm run package",
-    "package": "tfx extension create  --manifests azure-devops-extension.json",
+    "package": "npm run build && tfx extension create  --manifests azure-devops-extension.json",
     "testpackage": "tfx extension create  --manifests azure-devops-extension.json --rev-version",
     "gallery-publish": "tfx extension publish --rev-version",
     "clean": "rimraf ./dist && rimraf ./*.vsix && rimraf ./coverage && rimraf ./.nyc_output && rimraf ./tst/*.log && rimraf ./tst/*.js && rimraf ./src/*.js",
     "test": "tsc -p tsconfig.json && mocha -r ts-node/register tst/testsuite.test.ts --reporter mocha-junit-reporter",
-    "tb": "npm  run clean && npm run coverage",
+    "tb": "npm run clean && npm run coverage",
     "coverage": "nyc npm run test",
     "lint": "npx eslint . --ext .ts,.tsx"
   },
