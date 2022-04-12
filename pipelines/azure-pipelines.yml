@@ -24,6 +24,16 @@ steps:
   inputs:
     command: 'ci'
 - task: Npm@1
+  displayName: '[NPM ci] Restore V1 task packages'
+  inputs:
+    command: 'ci'
+    workingDir: 'src/restdemoV1'
+- task: Npm@1
+  displayName: '[NPM ci] Restore V2 task packages'
+  inputs:
+    command: 'ci'
+    workingDir: 'src/restdemoV2'
+- task: Npm@1
   displayName: '[NPM ci] Restore task packages'
   inputs:
     command: 'ci'
