@@ -25,3 +25,8 @@ So your home location should look like this:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*node10.completed*  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Node10**  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*node.exe*  
+
+
+[![Build Status](https://dev.azure.com/fgi/AzureDevOps/_apis/build/status/fgiele.AzureDevOpsTasks?branchName=main)](https://dev.azure.com/fgi/AzureDevOps/_build/latest?definitionId=9&branchName=main)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=AzureDevOpsTasks&metric=alert_status)](https://sonarcloud.io/dashboard?id=AzureDevOpsTasks)
