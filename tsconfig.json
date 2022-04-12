@@ -13,6 +13,6 @@
     "include":[
         "tst/**/*.ts",
         "src/**/*.ts",
-        "src/**/task.json"
+        "src/**/*.json"
     ]
 }

@@ -1,0 +1,46 @@
+{
+    "id": "b150485b-9b60-4607-8c72-f856a16a06c1",
+    "name": "restcalldemo",
+    "friendlyName": "Demo of a task that calls REST API",
+    "description": "This task will call REST APIs based on input",
+    "category": "Build",
+    "author": "fgiele",
+    "version": {
+      "Major": 1,
+      "Minor": 0,
+      "Patch": 0
+    },
+    "minimumAgentVersion": "1.83.0", 
+    "inputs": [
+      {
+          "name": "RestEndpoint",
+          "type": "connectedService:Generic",
+          "label": "REST API Url",
+          "defaultValue": "",
+          "required": true,
+          "helpMarkDown": "URL at which the Rest API can be reached. Example https://www.example.com/rest"
+      },
+      {
+        "name": "InputValue1",
+        "type": "string",
+        "label": "Some input used in the Rest calls",
+        "required": true,
+        "helpMarkDown": "This is one of the many values that can be passed into the task"
+      },
+      {
+        "name": "OptionalValue1",
+        "type": "string",
+        "label": "Some optional value",
+        "required": false,
+        "helpMarkDown": "This is one of the many values that can be passed into the task, in this case optional"
+      }
+    ],
+    "instanceNameFormat": "Rest API calling demo",
+    "execution": {
+      "Node10": {
+        "target": "$(currentDirectory)//task.js",
+        "argumentFormat": "",
+        "workingDirectory": "$(currentDirectory)"
+      }
+    }
+  }

@@ -1,0 +1,8 @@
+{
+    "name": "restcalldemo",
+    "description": "Rest Call Demo Task",
+    "dependencies": {
+        "typed-rest-client": "^1.8.6",
+        "azure-pipelines-task-lib": "^3.2.0"
+    }
+  }

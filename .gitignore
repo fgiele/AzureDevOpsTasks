@@ -3,10 +3,8 @@ coverage/
 dist/
 node_modules/
 *.vsix
-test-results.xml
-tst/*.js
-tst/*.log
-src/*.js
+**/*.js
+**/*.log
 **/*.js.map
 test-results.xml
 .taskkey

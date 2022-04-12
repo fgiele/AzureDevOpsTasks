@@ -1,7 +1,7 @@
 {
     "manifestVersion": 1,
     "id": "CollectionOfDemoTasks",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "name": "Demo set of tasks",
     "publisher": "FreekGiele",
     "description": "Collection of tasks that demonstrate how to create custom tasks, build and test them",
@@ -38,32 +38,40 @@
     },
     "contributions": [
         {
-            "id": "restcalldemo-task",
+            "id": "restdemo-task",
             "type": "ms.vss-distributed-task.task",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "task"
+                "name": "task/restdemo"
             }
         }
     ],
     "files": [
         {
             "path": "dist",
-            "packagePath": "task/restcalldemo"
+            "packagePath": "task/restdemo"
         },
         {
-            "path": "src/icon",
-            "packagePath": "task/restcalldemo"
+            "path": "src/restdemoV1/icon",
+            "packagePath": "task/restdemo/restdemoV1"
+        },
+        {
+            "path": "src/restdemoV2/icon",
+            "packagePath": "task/restdemo/restdemoV2"
         },
         {
             "path": "static",
             "addressable": true
         },
         {
-            "path": "src/node_modules",
-            "packagePath": "task/restcalldemo/node_modules"
+            "path": "src/restdemoV1/node_modules",
+            "packagePath": "task/restdemo/restdemoV1/node_modules"
+        },
+        {
+            "path": "src/restdemoV2/node_modules",
+            "packagePath": "task/restdemo/restdemoV2/node_modules"
         }
     ]
 }
