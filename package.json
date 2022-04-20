@@ -4,7 +4,7 @@
     "package": "tfx extension create  --manifests azure-devops-extension.json",
     "testpackage": "tfx extension create  --manifests azure-devops-extension.json --rev-version",
     "gallery-publish": "tfx extension publish --rev-version",
-    "clean": "rimraf ./dist && rimraf ./*.vsix && rimraf ./coverage && rimraf ./.nyc_output && rimraf ./tst/**/*.log && rimraf ./tst/**/*.js && rimraf ./src/**/*.js",
+    "clean": "rimraf ./dist && rimraf ./*.vsix && rimraf ./coverage && rimraf ./.nyc_output && rimraf ./tst/**/*.log && rimraf ./tst/**/*.js && rimraf ./src/firewallruleV*/*.js",
     "test": "tsc -p tsconfig.json && mocha -r ts-node/register tst/testsuite.test.ts --reporter mocha-junit-reporter",
     "lt": "npm  run clean && npm run coverage",
     "coverage": "nyc npm run test",
