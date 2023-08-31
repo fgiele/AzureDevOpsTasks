@@ -69,6 +69,7 @@ steps:
     command: 'custom'
     customCommand: 'run package'
 - task: PublishTestResults@2
+  condition: always()
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/test-results.xml'
